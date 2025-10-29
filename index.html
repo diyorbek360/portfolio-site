@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Портфолио — Diyorbek</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Навигация -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Diyorbek</div>
+      <ul class="nav-links">
+        <li><a href="#about">Обо мне</a></li>
+        <li><a href="#skills">Навыки</a></li>
+        <li><a href="#projects">Проекты</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+      <button class="menu-btn">⋮</button>
+    </nav>
+  </header>
+
+  <!-- Главный экран -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Привет, я <span>Diyorbek</span></h1>
+      <p>Frontend / Backend / Full-Stack разработчик</p>
+      <a href="#projects" class="btn">Посмотреть проекты</a>
+    </div>
+  </section>
+
+  <!-- Обо мне -->
+  <section id="about" class="about">
+    <div class="container">
+      <img src="пр.jpg" alt="Фото профиля" class="profile-pic">
+      <div class="about-text">
+        <h2>Обо мне</h2>
+        <p>
+          Я веб-разработчик, увлечён созданием красивых и функциональных сайтов.
+          Люблю чистый код, современные технологии и креативные решения.
+          Опыт работы с HTML, CSS, JavaScript, React и Node.js.
+        </p>
+        <a href="#" class="btn">Скачать резюме</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Навыки -->
+  <section id="skills" class="skills">
+    <h2>Навыки</h2>
+    <div class="skills-grid">
+      <div class="skill-card"><h3>HTML5</h3></div>
+      <div class="skill-card"><h3>CSS3 / SCSS</h3></div>
+      <div class="skill-card"><h3>Java</h3></div>
+      <div class="skill-card"><h3>Python</h3></div>
+      <div class="skill-card"><h3>SQLite</h3></div>
+      <div class="skill-card"><h3>Git / GitHub</h3></div>
+    </div>
+  </section>
+
+  <!-- Проекты -->
+  <section id="projects" class="projects">
+    <h2>Мои проекты</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <img src="Снимок экрана 2025-10-27 141002.png" alt="Проект 1">
+        <div class="project-info">
+          <h3>Landing Page</h3>
+          <p>Одностраничный сайт с адаптивным дизайном и анимацией.</p>
+          <a href="#" class="btn">Посмотреть</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="Снимок экрана 2025-10-27 141029.png" alt="Проект 2">
+        <div class="project-info">
+          <h3>Web App</h3>
+          <p>Приложение с использованием React и API.</p>
+          <a href="#" class="btn">Посмотреть</a>
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="Снимок экрана 2025-10-27 141053.png" alt="Проект 3">
+        <div class="project-info">
+          <h3>Интернет-магазин</h3>
+          <p>Полнофункциональный магазин с корзиной и оплатой.</p>
+          <a href="#" class="btn">Посмотреть</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contact">
+    <h2>Связаться со мной</h2>
+
+    <form action="https://formspree.io/f/xblpovpz" method="POST" id="contactForm">
+      <input type="text" name="name" placeholder="Ваше имя" required>
+      <input type="email" name="email" placeholder="Ваш email" required>
+      <textarea name="message" placeholder="Ваше сообщение" required></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+
+    <p id="status"></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Diyorbek. Все права защищены.</p>
+  </footer>
+
+  <!-- Скрипт -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('status');
+
+    // Меню
+    menuBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      navLinks.classList.toggle('active');
+    });
+    document.addEventListener('click', () => navLinks.classList.remove('active'));
+
+    // Отправка формы через Formspree
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const data = new FormData(form);
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          status.textContent = '✅ Сообщение отправлено! Я скоро свяжусь с вами.';
+          status.classList.remove('error');
+          form.reset();
+        } else {
+          status.textContent = '❌ Ошибка при отправке. Попробуйте позже.';
+          status.classList.add('error');
+        }
+      } catch (err) {
+        status.textContent = '⚠️ Ошибка соединения. Проверьте интернет.';
+        status.classList.add('error');
+      }
+    });
+  });
+  </script>
+</body>
+</html>

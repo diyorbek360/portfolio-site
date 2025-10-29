@@ -1,0 +1,389 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #222;
+  background-color: #f5f5f5;
+  scroll-behavior: smooth;
+}
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block;
+    font-size: 26px;
+    color: #222;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* Скрываем меню по умолчанию */
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    background: white;
+    flex-direction: column;
+    border-radius: 12px;
+    padding: 12px 18px;
+    gap: 12px;
+    list-style: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Показываем, когда есть класс active */
+  .nav-links.active {
+    display: flex;
+    animation: fadeIn 0.25s ease-out;
+  }
+
+  .nav-links a {
+    color: #222;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .nav-links a:hover {
+    color: #007bff;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+
+
+/* Навигация */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #0078ff;
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  background: linear-gradient(to right, #0078ff, #00c6ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero span {
+  color: #ffe600;
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.btn {
+    margin-top: 20px;
+  display: inline-block;
+  background: #0078ff;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #005fcc;
+}
+
+/* About */
+.about .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+  flex-wrap: wrap;
+}
+
+.profile-pic {
+  width: 250px;
+  border-radius: 50%;
+  margin: 20px;
+}
+
+.about-text {
+  max-width: 500px;
+  margin: 20px;
+}
+
+.about-text h2 {
+  margin-bottom: 15px;
+  font-size: 32px;
+}
+
+/* Skills */
+.skills {
+  background: white;
+  padding: 80px 60px;
+  text-align: center;
+}
+
+.skills h2 {
+  margin-bottom: 40px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.skill-card {
+  background: #0078ff;
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+/* Projects */
+.projects {
+  padding: 80px 60px;
+  text-align: center;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.project-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.project-info {
+  padding: 20px;
+}
+
+/* Contact */
+/* ===== СЕКЦИЯ СВЯЗАТЬСЯ СО МНОЙ ===== */
+#contact {
+  background: #1a1a1a; /* или любой фон твоего сайта */
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+#contact h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffb347; /* можно поменять под твою палитру */
+}
+
+/* ===== САМА ФОРМА ===== */
+#contact form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#contact input,
+#contact textarea {
+  background: #222;
+  border: 1px solid #444;
+  color: #fff;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+#contact input:focus,
+#contact textarea:focus {
+  border-color: #ffb347;
+}
+
+#contact button {
+  background: #ffb347;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#contact button:hover {
+  background: #ff9933;
+  transform: scale(1.05);
+}
+
+/* ===== СТАТУС (успех/ошибка) ===== */
+#status {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #90ee90; /* зелёный по умолчанию */
+}
+
+#status.error {
+  color: #ff7070;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 600px) {
+  #contact form {
+    width: 100%;
+  }
+}
+
+
+/* Footer */
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .about .container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 36px;
+  }
+}
+/* ==== ПК-версия ==== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 600;
+}
+
+.menu-btn {
+  display: none; /* на ПК не показываем */
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #222;
+  cursor: pointer;
+}
+
+/* ==== Мобильная версия ==== */
+@media (max-width: 768px) {
+  .menu-btn {
+    display: block; /* показываем кнопку */
+    z-index: 1001;
+  }
+
+  .nav-links {
+    display: none; /* скрываем меню по умолчанию */
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    flex-direction: column;
+    background: white;
+    border-radius: 12px;
+    padding: 12px 18px;
+    gap: 12px;
+    list-style: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  /* показываем только при клике */
+  .nav-links.active {
+    display: flex;
+    animation: fadeIn 0.60s ease-out;
+  }
+
+  .nav-links a {
+    color: #222;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  .nav-links a:hover {
+    color: #007bff;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
